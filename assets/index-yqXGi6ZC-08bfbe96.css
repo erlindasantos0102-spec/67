@@ -6065,28 +6065,29 @@
   min-height: 100vh;
 }
 ._86eig4z:before {
-  content: "cher" "ri";
+  content: "HOHO GAMES";
+  letter-spacing: -.02em;
 }
 ._86eig4z {
   position: relative;
 }
 :root,
 [data-theme=cherri] {
-  --bg-base:#0c0405;
-  --bg-1-base:#11070a;
-  --bg-2-base:#170a0d;
-  --bg-3-base:#1d0d11;
-  --bg-4-base:#261015;
-  --accent:#ff6b8b;
-  --accent-2:#c4344f;
-  --accent-glow:#ff6b8bbd;
-  --text:#f0d8dc;
-  --text-muted:#b08791;
-  --bright-text:#fff5f7;
-  --border:#ffc8d238;
-  --border-2:#ffc8d224;
-  --border-3:#ffc8d217;
-  --border-4:#ffc8d20d;
+  --bg-base:#050505;
+  --bg-1-base:#0b0b0b;
+  --bg-2-base:#121212;
+  --bg-3-base:#1a1a1a;
+  --bg-4-base:#242424;
+  --accent:#f5f5f5;
+  --accent-2:#b4b4b4;
+  --accent-glow:#ffffff2e;
+  --text:#d2d2d2;
+  --text-muted:#8e8e8e;
+  --bright-text:#ffffff;
+  --border:#c8c8c84d;
+  --border-2:#c8c8c836;
+  --border-3:#c8c8c826;
+  --border-4:#c8c8c81a;
 }
 [data-theme=midnight] {
   --bg-base:#04060f;
@@ -6447,8 +6448,266 @@ html {
 @keyframes tabFadeIn {
   0% {
     opacity: 0;
+    translate: 0 6px;
   }
   to {
     opacity: 1;
+    translate: 0 0;
   }
+}
+
+/* ==========================================================================
+   HOHO GAMES — monochrome theme, bottom dock, rescale, touch + motion polish
+   (appended; scoped to the app shell. Does not touch proxy frames or logic.)
+   ========================================================================== */
+:root {
+  --ui-scale: 1;
+  --hoho-ease: cubic-bezier(.22, 1, .36, 1);
+  --dock-btn: 2.75rem;
+  --dock-pad: .5rem;
+  --dock-gap: 1.5rem;
+  --dock-h: calc(var(--dock-btn) + var(--dock-pad) * 2 + 2px);
+  --dock-reserve: calc(var(--dock-h) + var(--dock-gap) + .75rem + env(safe-area-inset-bottom, 0px));
+  --color-cyan-50:#fafafa;
+  --color-cyan-100:#f5f5f5;
+  --color-cyan-200:#e5e5e5;
+  --color-cyan-300:#d4d4d4;
+  --color-cyan-400:#a3a3a3;
+  --color-cyan-500:#737373;
+  --color-cyan-600:#525252;
+  --color-cyan-700:#404040;
+  --color-cyan-800:#262626;
+  --color-cyan-900:#171717;
+  --color-cyan-950:#0a0a0a;
+  --color-sky-50:#fafafa;
+  --color-sky-100:#f5f5f5;
+  --color-sky-200:#e5e5e5;
+  --color-sky-300:#d4d4d4;
+  --color-sky-400:#a3a3a3;
+  --color-sky-500:#737373;
+  --color-sky-600:#525252;
+  --color-sky-700:#404040;
+  --color-sky-800:#262626;
+  --color-sky-900:#171717;
+  --color-sky-950:#0a0a0a;
+  --color-blue-50:#fafafa;
+  --color-blue-100:#f5f5f5;
+  --color-blue-200:#e5e5e5;
+  --color-blue-300:#d4d4d4;
+  --color-blue-400:#a3a3a3;
+  --color-blue-500:#737373;
+  --color-blue-600:#525252;
+  --color-blue-700:#404040;
+  --color-blue-800:#262626;
+  --color-blue-900:#171717;
+  --color-blue-950:#0a0a0a;
+  --color-indigo-50:#fafafa;
+  --color-indigo-100:#f5f5f5;
+  --color-indigo-200:#e5e5e5;
+  --color-indigo-300:#d4d4d4;
+  --color-indigo-400:#a3a3a3;
+  --color-indigo-500:#737373;
+  --color-indigo-600:#525252;
+  --color-indigo-700:#404040;
+  --color-indigo-800:#262626;
+  --color-indigo-900:#171717;
+  --color-indigo-950:#0a0a0a;
+  --color-violet-50:#fafafa;
+  --color-violet-100:#f5f5f5;
+  --color-violet-200:#e5e5e5;
+  --color-violet-300:#d4d4d4;
+  --color-violet-400:#a3a3a3;
+  --color-violet-500:#737373;
+  --color-violet-600:#525252;
+  --color-violet-700:#404040;
+  --color-violet-800:#262626;
+  --color-violet-900:#171717;
+  --color-violet-950:#0a0a0a;
+  --color-purple-50:#fafafa;
+  --color-purple-100:#f5f5f5;
+  --color-purple-200:#e5e5e5;
+  --color-purple-300:#d4d4d4;
+  --color-purple-400:#a3a3a3;
+  --color-purple-500:#737373;
+  --color-purple-600:#525252;
+  --color-purple-700:#404040;
+  --color-purple-800:#262626;
+  --color-purple-900:#171717;
+  --color-purple-950:#0a0a0a;
+  --color-fuchsia-50:#fafafa;
+  --color-fuchsia-100:#f5f5f5;
+  --color-fuchsia-200:#e5e5e5;
+  --color-fuchsia-300:#d4d4d4;
+  --color-fuchsia-400:#a3a3a3;
+  --color-fuchsia-500:#737373;
+  --color-fuchsia-600:#525252;
+  --color-fuchsia-700:#404040;
+  --color-fuchsia-800:#262626;
+  --color-fuchsia-900:#171717;
+  --color-fuchsia-950:#0a0a0a;
+  --color-pink-50:#fafafa;
+  --color-pink-100:#f5f5f5;
+  --color-pink-200:#e5e5e5;
+  --color-pink-300:#d4d4d4;
+  --color-pink-400:#a3a3a3;
+  --color-pink-500:#737373;
+  --color-pink-600:#525252;
+  --color-pink-700:#404040;
+  --color-pink-800:#262626;
+  --color-pink-900:#171717;
+  --color-pink-950:#0a0a0a;
+}
+html {
+  font-size: calc(16px * var(--ui-scale, 1));
+  transition: font-size .22s var(--hoho-ease);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+html, body { max-width: 100%; overflow-x: hidden; }
+#_xi9j4u0 {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  animation: hohoFade .35s ease-out both;
+}
+::selection { background: #fff; color: #000; }
+.text-\[7px\] { font-size: calc(7px * var(--ui-scale,1)); }
+.text-\[9px\] { font-size: calc(9px * var(--ui-scale,1)); }
+.text-\[10px\] { font-size: calc(10px * var(--ui-scale,1)); }
+.text-\[11px\] { font-size: calc(11px * var(--ui-scale,1)); }
+.text-\[12px\] { font-size: calc(12px * var(--ui-scale,1)); }
+.text-\[13px\] { font-size: calc(13px * var(--ui-scale,1)); }
+.text-\[14px\] { font-size: calc(14px * var(--ui-scale,1)); }
+
+/* ---- shared interaction states ---- */
+button, a, [role=button], summary, label, select, input[type=range], input[type=checkbox] { touch-action: manipulation; }
+button, [role=button] { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, [role=button]:focus-visible, select:focus-visible,
+input[type=range]:focus-visible, input[type=checkbox]:focus-visible, input[type=color]:focus-visible {
+  outline: 2px solid var(--bright-text);
+  outline-offset: 2px;
+}
+button:not(:disabled):active { filter: brightness(.88); }
+.hoho-btn { transition: background-color .15s ease, border-color .15s ease, transform .12s ease, opacity .15s ease; }
+.hoho-btn:not(:disabled):active { transform: scale(.97); }
+.bg-\(--accent-2\).text-white { color: #0a0a0a; }
+button, .transition-colors { transition-duration: .15s; }
+
+/* ---- dock (the former left sidebar) ---- */
+.hoho-dock {
+  position: fixed;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: max-content;
+  max-width: calc(100vw - 1rem);
+  bottom: calc(var(--dock-gap) + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .25rem;
+  padding: var(--dock-pad);
+  background: rgba(10, 10, 10, .72);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(210, 210, 210, .26);
+  border-radius: 1.625rem;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .55), 0 2px 8px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .07);
+  animation: hohoDockIn .55s var(--hoho-ease) .1s both;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.hoho-dock-group { display: flex; flex-direction: row; align-items: center; gap: .25rem; }
+.hoho-dock-sep { width: 1px; height: 1.75rem; margin-inline: .25rem; background: rgba(210, 210, 210, .22); flex: none; }
+.hoho-dock-item { position: relative; display: flex; justify-content: center; flex: none; }
+.hoho-dock-btn {
+  width: var(--dock-btn);
+  height: var(--dock-btn);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 1.0625rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #a9a9a9;
+  cursor: pointer;
+  transition: transform .2s var(--hoho-ease), background-color .18s ease, color .18s ease, border-color .18s ease;
+  will-change: transform;
+}
+.hoho-dock-btn svg { width: 1.375rem; height: 1.375rem; flex: none; }
+@media (hover: hover) {
+  .hoho-dock-btn:hover { transform: translateY(-4px) scale(1.12); background: rgba(255, 255, 255, .1); color: #fff; }
+}
+.hoho-dock-btn:active { transform: scale(.93); filter: none; background: rgba(255, 255, 255, .16); }
+.hoho-dock-btn.is-active { background: rgba(255, 255, 255, .15); border-color: rgba(255, 255, 255, .24); color: #fff; }
+.hoho-dock-dot {
+  position: absolute; left: 50%; bottom: -.1875rem; width: 4px; height: 4px; margin-left: -2px;
+  border-radius: 50%; background: #fff; box-shadow: 0 0 6px rgba(255, 255, 255, .8);
+  animation: hohoPop .25s var(--hoho-ease) both;
+}
+.hoho-tip {
+  position: absolute; left: 50%; bottom: calc(100% + 1rem);
+  transform: translate(-50%, 4px);
+  padding: .3rem .65rem; font-size: .75rem; font-weight: 500; line-height: 1.2; white-space: nowrap;
+  color: #fff; background: rgba(14, 14, 14, .96);
+  border: 1px solid rgba(255, 255, 255, .18); border-radius: .5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .5);
+  opacity: 0; pointer-events: none; z-index: 2;
+  transition: opacity .15s ease, transform .18s var(--hoho-ease);
+}
+@media (hover: hover) {
+  .hoho-dock-item:hover .hoho-tip { opacity: 1; transform: translate(-50%, 0); transition-delay: .25s; }
+}
+.hoho-dock-item:has(.hoho-dock-btn:focus-visible) .hoho-tip { opacity: 1; transform: translate(-50%, 0); }
+@media (hover: none) { .hoho-tip { display: none; } }
+
+/* room for the dock so it never covers app controls */
+.hoho-main { padding-bottom: var(--dock-reserve); transition: padding-bottom .22s var(--hoho-ease); }
+
+/* ---- settings modal: fits the viewport, stacks on narrow screens ---- */
+.hoho-modal { height: min(32.5rem, calc(100dvh - 2rem)); max-height: calc(100dvh - 2rem); max-width: min(42rem, 100%); }
+.hoho-modal input[type=range] { cursor: pointer; }
+.hoho-rescale-value { min-width: 2.75rem; }
+.hoho-range { height: 1.5rem; }
+@media (max-width: 640px) {
+  .hoho-modal { flex-direction: column; }
+  .hoho-settings-nav { width: auto; flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--border-4); padding: .375rem; -webkit-overflow-scrolling: touch; }
+  .hoho-settings-nav > * { flex: none; }
+  .hoho-settings-nav > div:first-child, .hoho-settings-nav > div:last-child { display: none; }
+  .hoho-modal > div:last-child { min-height: 0; }
+  .hoho-rescale .shrink-0.ml-4 { margin-left: .5rem; }
+  .hoho-rescale-controls { flex-wrap: wrap; justify-content: flex-end; }
+}
+
+/* ---- touch / tablets ---- */
+@media (pointer: coarse) {
+  .hoho-dock-btn { width: max(var(--dock-btn), 44px); height: max(var(--dock-btn), 44px); }
+  input[type=range], .hoho-range { min-height: 44px; width: 9rem; }
+  input:not([type=range]):not([type=checkbox]):not([type=radio]):not([type=color]):not([type=file]), select, textarea { font-size: max(16px, 1em); }
+  .hoho-settings-nav button { min-height: 44px; }
+  .hoho-btn { min-height: 44px; min-width: 44px; }
+}
+@media (max-width: 520px) {
+  :root { --dock-btn: 2.5rem; --dock-gap: 1rem; }
+  .hoho-dock { gap: .125rem; padding: .375rem; border-radius: 1.5rem; overflow-x: auto; scrollbar-width: none; }
+  .hoho-dock::-webkit-scrollbar { display: none; }
+  .hoho-dock-group { gap: .125rem; }
+  .hoho-dock-sep { margin-inline: .125rem; }
+}
+@media (pointer: coarse) and (max-width: 520px) { .hoho-dock-btn { width: 44px; height: 44px; } }
+@media (max-height: 520px) and (orientation: landscape) {
+  :root { --dock-btn: 2.5rem; --dock-gap: .5rem; --dock-pad: .375rem; }
+}
+
+/* ---- motion ---- */
+@keyframes hohoFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hohoDockIn { from { opacity: 0; translate: 0 1.25rem; scale: .96; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes hohoPop { from { opacity: 0; scale: .2; } to { opacity: 1; scale: 1; } }
+@keyframes hohoRise { from { opacity: 0; translate: 0 .75rem; } to { opacity: 1; translate: 0 0; } }
+._86eig4z { animation: hohoRise .6s var(--hoho-ease) both; }
+#_7sufiuy { animation: hohoRise .6s var(--hoho-ease) .08s both; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .hoho-dock-btn:hover { transform: none; }
 }
